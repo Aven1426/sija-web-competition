@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/gallery.css" />
+    <title>Gallery SIJA 26</title>
+    <link rel="shortcut icon" href="assets/aldion-logo-non-bg.png" type="image/png" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Documentation</h1>
+      <div class="top-content">
+        <h3>Photo Gallery</h3>
+        <input style="display: none" onchange="filter();" type="radio" name="Photos" id="check1" checked />
+        <input style="display: none" onchange="filter('sija1');" type="radio" name="Photos" id="check2" />
+        <input style="display: none" onchange="filter('sija2');" type="radio" name="Photos" id="check3" />
+        <input style="display: none" onchange="filter('sijaStaff');" type="radio" name="Photos" id="check4" />
+
+        <label for="check1">All Photos</label>
+        <label for="check2">XSIJA1 Photos</label>
+        <label for="check3">XSIJA2 Photos</label>
+        <label for="check4">SIJA Staff's Photos</label>
+      </div>
+    </div>
+
+    <div class="photo-gallery">
+      <div class="pic family" data-tag="sija1">
+        <img src="assets/SIJA1(1).jpeg" alt="" />
+      </div>
+      <div class="pic child" data-tag="sija2">
+        <img src="assets/SIJA2(1).jpeg" alt="" />
+      </div>
+      <div class="pic child" data-tag="sija1">
+        <img src="assets/SIJA1(2).jpeg" alt="" />
+      </div>
+      <div class="pic child" data-tag="sija2">
+        <img src="assets/SIJA2(2).jpeg" alt="" />
+      </div>
+      <div class="pic child" data-tag="sija1">
+        <img src="assets/SIJA1(3).jpeg" alt="" />
+      </div>
+      <div class="pic child" data-tag="sija2">
+        <img src="assets/SIJA2(3).jpeg" alt="" />
+      </div>
+      <div class="pic child" data-tag="sijaStaff">
+        <img src="assets/5.png" alt="" />
+      </div>
+      <div class="pic child" data-tag="sijaStaff">
+        <img src="assets/6.png" alt="" />
+      </div>
+      <div class="pic child" data-tag="sijaStaff">
+        <img src="assets/7.png" alt="" />
+      </div>
+      <div class="pic child" data-tag="sijaStaff">
+        <img src="assets/8.png" alt="" />
+      </div>
+      <div class="pic child" data-tag="sijaStaff">
+        <img src="assets/9.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      function filter(category) {
+        // variable declaration of each photo category
+        var SIJA1 = document.querySelectorAll("[data-tag='sija1']");
+        var SIJA2 = document.querySelectorAll("[data-tag='sija2']");
+        var STAFF = document.querySelectorAll("[data-tag='sijaStaff']");
+
+        // initiation of hide all elements before showing by selected category
+        hideAll();
+
+        switch (category) {
+          //statement if selected category is sija 1
+          case "sija1":
+            SIJA1.forEach((element) => {
+              element.style.display = null;
+            });
+            break;
+          //statement if selected category is sija 2
+          case "sija2":
+            SIJA2.forEach((element) => {
+              element.style.display = null;
+            });
+            break;
+          //statement if selected category is sija staff
+          case "sijaStaff":
+            STAFF.forEach((element) => {
+              element.style.display = null;
+            });
+            break;
+          //default statement if no category is given
+          default:
+            showAll();
+            break;
+        }
+      }
+
+      // hide all photos
+      function hideAll() {
+        var photos = document.getElementsByClassName("photo-gallery")[0].children;
+        for (let photo of photos) {
+          photo.style.display = "none";
+        }
+      }
+
+      // show all photos
+      function showAll() {
+        var photos = document.getElementsByClassName("photo-gallery")[0].children;
+        for (let photo of photos) {
+          photo.style.display = null;
+        }
+      }
+    </script>
+  </body>
+</html>
